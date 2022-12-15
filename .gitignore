@@ -11,3 +11,5 @@ dist/
 *.zip
 *.dll
 *.exe
+zio-scala-native-lambda
+node_modules

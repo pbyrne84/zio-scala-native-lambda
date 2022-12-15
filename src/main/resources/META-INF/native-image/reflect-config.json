@@ -1,0 +1,551 @@
+[
+{
+  "name":"[B"
+},
+{
+  "name":"[Lcom.github.tomakehurst.wiremock.http.HttpHeader;"
+},
+{
+  "name":"[Lcom.google.common.collect.ImmutableMapEntry;"
+},
+{
+  "name":"[Ljava.lang.Object;"
+},
+{
+  "name":"[Ljava.lang.String;"
+},
+{
+  "name":"[Lorg.eclipse.jetty.server.Handler;"
+},
+{
+  "name":"[Lorg.eclipse.jetty.servlet.ServletMapping;"
+},
+{
+  "name":"[Lsbt.testing.Task;"
+},
+{
+  "name":"[Lscala.Option;"
+},
+{
+  "name":"[Lsttp.model.UriInterpolator$Token;"
+},
+{
+  "name":"[Lzio.ZIO$EvaluationStep;"
+},
+{
+  "name":"[Lzio.ZLayer;"
+},
+{
+  "name":"[Lzio.internal.ZScheduler$Worker;"
+},
+{
+  "name":"[Lzio.test.ZIOSpecAbstract;"
+},
+{
+  "name":"[Lzio.test.sbt.ZTestTask;"
+},
+{
+  "name":"ch.qos.logback.core.ConsoleAppender",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.core.OutputStreamAppender",
+  "methods":[{"name":"setEncoder","parameterTypes":["ch.qos.logback.core.encoder.Encoder"] }]
+},
+{
+  "name":"com.fasterxml.jackson.databind.ext.Java7HandlersImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.fasterxml.jackson.databind.ext.Java7SupportImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.pbyrne84.zioscalanativelambda.client.LambdaHttpClientSpec$",
+  "fields":[{"name":"MODULE$"}]
+},
+{
+  "name":"com.github.pbyrne84.zioscalanativelambda.message.SqsDecodingSpec$",
+  "fields":[{"name":"MODULE$"}]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.FindStubMappingsByMetadataTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.GetAllScenariosTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.GetGlobalSettingsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.GetRecordingStatusTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.ImportStubMappingsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.PatchExtendedSettingsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.RemoveServeEventTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.RemoveServeEventsByRequestPatternTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.RemoveServeEventsByStubMetadataTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.RemoveStubMappingsByMetadataTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.StartRecordingTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.StopRecordingTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.CreateStubMappingTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.DeleteStubFileTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.EditStubFileTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.EditStubMappingTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.FindNearMissesForRequestPatternTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.FindNearMissesForRequestTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.FindNearMissesForUnmatchedTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.FindRequestsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.FindUnmatchedRequestsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GetAllRequestsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GetAllStubFilesTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GetAllStubMappingsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GetCaCertTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GetDocIndexTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GetRecordingsIndexTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GetRequestCountTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GetServedStubTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GetStubMappingTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GetSwaggerSpecTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.GlobalSettingsUpdateTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.OldCreateStubMappingTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.OldEditStubMappingTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.OldRemoveStubMappingTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.OldResetRequestsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.RemoveStubMappingTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.ResetRequestsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.ResetScenariosTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.ResetStubMappingsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.ResetTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.ResetToDefaultMappingsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.RootRedirectTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.RootTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.SaveMappingsTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.ShutdownServerTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.admin.tasks.SnapshotTask",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.http.HttpHeadersJsonSerializer",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.http.ResponseDefinition",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[
+    {"name":"getAdditionalProxyRequestHeaders","parameterTypes":[] }, 
+    {"name":"getBase64Body","parameterTypes":[] }, 
+    {"name":"getBody","parameterTypes":[] }, 
+    {"name":"getBodyFileName","parameterTypes":[] }, 
+    {"name":"getChunkedDribbleDelay","parameterTypes":[] }, 
+    {"name":"getDelayDistribution","parameterTypes":[] }, 
+    {"name":"getFault","parameterTypes":[] }, 
+    {"name":"getFixedDelayMilliseconds","parameterTypes":[] }, 
+    {"name":"getHeaders","parameterTypes":[] }, 
+    {"name":"getJsonBody","parameterTypes":[] }, 
+    {"name":"getProxyBaseUrl","parameterTypes":[] }, 
+    {"name":"getStatus","parameterTypes":[] }, 
+    {"name":"getStatusMessage","parameterTypes":[] }, 
+    {"name":"getTransformerParameters","parameterTypes":[] }, 
+    {"name":"getTransformers","parameterTypes":[] }, 
+    {"name":"isFromConfiguredStub","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.jetty92.Jetty92HttpServer",
+  "methods":[{"name":"<init>","parameterTypes":["com.github.tomakehurst.wiremock.core.Options","com.github.tomakehurst.wiremock.http.AdminRequestHandler","com.github.tomakehurst.wiremock.http.StubRequestHandler"] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.jetty94.Jetty94HttpServer"
+},
+{
+  "name":"com.github.tomakehurst.wiremock.jetty94.WritableFileOrClasspathKeyStoreSource"
+},
+{
+  "name":"com.github.tomakehurst.wiremock.matching.AnythingPattern",
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"com.github.tomakehurst.wiremock.matching.RegexPattern",
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"com.github.tomakehurst.wiremock.servlet.ContentTypeSettingFilter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.servlet.TrailingSlashFilter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.tomakehurst.wiremock.servlet.WireMockHandlerDispatchingServlet",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.TlsMasterSecretGenerator",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"java.io.FilePermission"
+},
+{
+  "name":"java.lang.ClassValue"
+},
+{
+  "name":"java.lang.RuntimePermission"
+},
+{
+  "name":"java.lang.String"
+},
+{
+  "name":"java.lang.invoke.VarHandle",
+  "methods":[{"name":"releaseFence","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.management.ManagementFactory",
+  "methods":[{"name":"getRuntimeMXBean","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.management.RuntimeMXBean",
+  "methods":[{"name":"getUptime","parameterTypes":[] }]
+},
+{
+  "name":"java.net.NetPermission"
+},
+{
+  "name":"java.net.SocketPermission"
+},
+{
+  "name":"java.net.URLPermission",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "name":"java.security.AlgorithmParametersSpi"
+},
+{
+  "name":"java.security.AllPermission"
+},
+{
+  "name":"java.security.KeyStoreSpi"
+},
+{
+  "name":"java.security.MessageDigestSpi"
+},
+{
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"java.security.SecurityPermission"
+},
+{
+  "name":"java.util.HashSet",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"java.util.PropertyPermission"
+},
+{
+  "name":"javax.security.auth.x500.X500Principal",
+  "fields":[{"name":"thisX500Name"}],
+  "methods":[{"name":"<init>","parameterTypes":["sun.security.x509.X500Name"] }]
+},
+{
+  "name":"javax.smartcardio.CardPermission"
+},
+{
+  "name":"net.logstash.logback.encoder.LogstashEncoder",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.commons.logging.LogFactory"
+},
+{
+  "name":"org.apache.commons.logging.impl.Jdk14Logger",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"org.apache.commons.logging.impl.Log4JLogger"
+},
+{
+  "name":"org.apache.commons.logging.impl.LogFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.apache.commons.logging.impl.WeakHashtable",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.eclipse.jetty.http.pathmap.PathSpecSet",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.eclipse.jetty.server.Request",
+  "methods":[{"name":"getUri","parameterTypes":[] }]
+},
+{
+  "name":"org.eclipse.jetty.servlets.CrossOriginFilter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.eclipse.jetty.servlets.gzip.GzipHandler",
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"addIncludedMethods","parameterTypes":["java.lang.String[]"] }
+  ]
+},
+{
+  "name":"org.eclipse.jetty.util.RegexSet",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"org.eclipse.jetty.util.log.Slf4jLog",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"scala.Symbol",
+  "methods":[{"name":"apply","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"sun.security.pkcs12.PKCS12KeyStore",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.DRBG",
+  "methods":[{"name":"<init>","parameterTypes":["java.security.SecureRandomParameters"] }]
+},
+{
+  "name":"sun.security.provider.JavaKeyStore$JKS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA2$SHA256",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.X509Factory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.rsa.RSAKeyFactory$Legacy",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.ssl.KeyManagerFactoryImpl$SunX509",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.ssl.SSLContextImpl$DefaultSSLContext",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.ssl.SSLContextImpl$TLSContext",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.x509.AuthorityInfoAccessExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.AuthorityKeyIdentifierExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.BasicConstraintsExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.CRLDistributionPointsExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.CertificatePoliciesExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.ExtendedKeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.IssuerAlternativeNameExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.KeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.NetscapeCertTypeExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.PrivateKeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.SubjectAlternativeNameExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.SubjectKeyIdentifierExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"zio.test.sbt.ZTestFramework",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]
