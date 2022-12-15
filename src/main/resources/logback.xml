@@ -1,0 +1,22 @@
+<configuration>
+
+  <!--
+  I could be making things up here but this should become an async console
+  appender to replicate custom things such as trace ids get logged via mdc.
+  Without that things can go missing when switching to async appenders hence
+  we have the Kamon Logback thing that handles it.
+  -->
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+
+      </encoder>
+    </appender>
+
+
+
+  <root level="info">
+    <appender-ref ref="CONSOLE" /> 
+<!--    <appender-ref ref="CONSOLE2" />-->
+  </root>
+</configuration>

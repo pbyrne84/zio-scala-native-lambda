@@ -1,0 +1,16 @@
+#!/bin/sh
+# modified from https://github.com/fafriat/hello-lambda/blob/master/hello-lambda-custom-with-logs/bootstrap
+# capturing the output breaks the logging :(
+# RESPONSE=$($(echo "$_HANDLER" | cut -d. -f2) "$EVENT_DATA")
+# as println goes to cloudtrail etc.
+while true
+set -euo pipefail
+do
+#  HEADERS="$(mktemp)"
+#  EVENT_DATA=$(curl -sS -LD "$HEADERS" -X GET "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/next")
+#  REQUEST_ID=$(grep -Fi Lambda-Runtime-Aws-Request-Id "$HEADERS" | tr -d '[:space:]' | cut -d: -f2)
+  ./zio-scala-native-lambda -Xmx128m
+#  curl -sS -X POST "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/$REQUEST_ID/response"  -d "SUCCESS"
+done
+
+
