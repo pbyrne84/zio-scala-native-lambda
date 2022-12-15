@@ -1,2 +1,13 @@
-*.class
-*.log
+.idea
+target
+.DS_Store
+logs
+.scannerwork
+# out is used by bloop/bsp etc when compiling
+out/
+.bloop/
+.bsp/
+dist/
+*.zip
+*.dll
+*.exe
