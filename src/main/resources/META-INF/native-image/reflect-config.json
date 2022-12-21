@@ -12,6 +12,9 @@
   "name":"[Ljava.lang.Object;"
 },
 {
+  "name":"[Ljava.lang.StackTraceElement;"
+},
+{
   "name":"[Ljava.lang.String;"
 },
 {
@@ -45,6 +48,35 @@
   "name":"[Lzio.test.sbt.ZTestTask;"
 },
 {
+  "name":"ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.DateConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.LevelConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.LineSeparatorConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.LoggerConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.MessageConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.pattern.ThreadConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"ch.qos.logback.core.ConsoleAppender",
   "queryAllPublicMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -54,12 +86,24 @@
   "methods":[{"name":"setEncoder","parameterTypes":["ch.qos.logback.core.encoder.Encoder"] }]
 },
 {
+  "name":"ch.qos.logback.core.encoder.LayoutWrappingEncoder",
+  "methods":[{"name":"setParent","parameterTypes":["ch.qos.logback.core.spi.ContextAware"] }]
+},
+{
+  "name":"ch.qos.logback.core.pattern.PatternLayoutEncoderBase",
+  "methods":[{"name":"setPattern","parameterTypes":["java.lang.String"] }]
+},
+{
   "name":"com.fasterxml.jackson.databind.ext.Java7HandlersImpl",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"com.fasterxml.jackson.databind.ext.Java7SupportImpl",
   "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.github.pbyrne84.zioscalanativelambda.LamdaSqsServiceSpec$",
+  "fields":[{"name":"MODULE$"}]
 },
 {
   "name":"com.github.pbyrne84.zioscalanativelambda.client.LambdaHttpClientSpec$",
@@ -297,6 +341,14 @@
 },
 {
   "name":"com.github.tomakehurst.wiremock.matching.AnythingPattern",
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"com.github.tomakehurst.wiremock.matching.EqualToJsonPattern",
+  "queryAllDeclaredConstructors":true
+},
+{
+  "name":"com.github.tomakehurst.wiremock.matching.EqualToPattern",
   "queryAllDeclaredConstructors":true
 },
 {

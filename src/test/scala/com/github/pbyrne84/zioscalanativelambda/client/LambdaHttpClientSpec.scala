@@ -4,7 +4,6 @@ import com.github.pbyrne84.zioscalanativelambda.message.SqsDecoding
 import com.github.pbyrne84.zioscalanativelambda.shared.BaseSpec
 import com.github.pbyrne84.zioscalanativelambda.shared.wiremock.LambdaWireMock
 import io.circe.Decoder
-import sttp.model.Header
 import zio.test.TestAspect._
 import zio.test._
 import zio.test.Assertion._
@@ -12,32 +11,13 @@ import java.util.UUID
 
 object LambdaHttpClientSpec extends BaseSpec {
 
-  private val messageBody =
-    """
-      |{
-      |  "Records": [
-      |    {
-      |      "messageId": "9d9868cb-2ea7-4e67-9661-7310ea6354f2",
-      |      "receiptHandle": "AQEBlI+oiogEjaSs56uTUzJbk6tp4y6ai6==",
-      |      "body": "I Like Food",
-      |      "attributes": {
-      |        "ApproximateReceiveCount": "7",
-      |        "SentTimestamp": "1671539235847"
-      |      },
-      |      "messageAttributes": {},
-      |      "md5OfBody": "886251e46ceb8fddeb5dc79b26b2fab1",
-      |      "eventSource": "aws:sqs",
-      |      "eventSourceARN": "arn:aws:sqs:eu-west-2:538645939706:zio-lambda-test-queue",
-      |      "awsRegion": "eu-west-2"
-      |    }
-      |  ]
-      |}
-      |""".stripMargin
+  private val body = "I Like Food"
+  private val sqsMessageJson = sqsMessage.createValid(body)
 
   private val expectedDecodedMessage: SqsDecoding[String] = SqsDecoding(
     messageId = UUID.fromString("9d9868cb-2ea7-4e67-9661-7310ea6354f2"),
     receiptHandle = "AQEBlI+oiogEjaSs56uTUzJbk6tp4y6ai6==",
-    "I Like Food",
+    body,
     attributes = Map(
       "ApproximateReceiveCount" -> "7",
       "SentTimestamp" -> "1671539235847"
@@ -58,7 +38,7 @@ object LambdaHttpClientSpec extends BaseSpec {
           for {
             _ <- reset
             responseHeaders = List("Lambda-runtime-aws-request-Id" -> "header-request-id")
-            _ <- LambdaWireMock.stubGetNextMessageCall(messageBody, responseHeaders)
+            _ <- LambdaWireMock.stubGetNextMessageCall(sqsMessageJson, responseHeaders)
             result <- LambdaHttpClient.getNextMessage
           } yield assertTrue(
             result == NextMessageResponse("header-request-id", List(expectedDecodedMessage))
@@ -68,7 +48,7 @@ object LambdaHttpClientSpec extends BaseSpec {
           for {
             _ <- reset
             responseHeaders = List.empty
-            _ <- LambdaWireMock.stubGetNextMessageCall(messageBody, responseHeaders)
+            _ <- LambdaWireMock.stubGetNextMessageCall(body, responseHeaders)
             result <- LambdaHttpClient.getNextMessage.mapError(error => error.getClass).exit
           } yield assert(result)(fails(equalTo(classOf[NextMessageError])))
         }

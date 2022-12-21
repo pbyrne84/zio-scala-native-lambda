@@ -9,7 +9,7 @@ import zio.config.ReadError
 import zio.{IO, Task, ZIO, ZLayer}
 
 case class NextMessageResponse[A](headerRequestId: String, messages: List[SqsDecoding[A]])
-case class NextMessageError(message: String, maybeCause: Option[Throwable])
+case class NextMessageError(maybeRequestId: Option[String], message: String, maybeCause: Option[Throwable])
     extends RuntimeException(message, maybeCause.orNull)
 
 object LambdaHttpClient {
@@ -19,7 +19,9 @@ object LambdaHttpClient {
     } yield new LambdaHttpClient(config)
   }
 
-  def getNextMessage[A](implicit bodyDecoder: Decoder[A]): ZIO[LambdaHttpClient, Throwable, NextMessageResponse[A]] = {
+  def getNextMessage[A](implicit
+      bodyDecoder: Decoder[A]
+  ): ZIO[LambdaHttpClient, NextMessageError, NextMessageResponse[A]] = {
     ZIO.serviceWithZIO[LambdaHttpClient](_.getNextMessage)
   }
 
@@ -35,12 +37,11 @@ object LambdaHttpClient {
 //pulumi new aws-typescript eu-west-2
 class LambdaHttpClient(lambdaConfig: LambdaConfig) {
 
-  import sttp.model._
   import sttp.client3._
 
   private val requestIdHeaderName = "lambda-runtime-aws-request-id"
 
-  def getNextMessage[A](implicit bodyDecoder: Decoder[A]): ZIO[Any, Throwable, NextMessageResponse[A]] = {
+  def getNextMessage[A](implicit bodyDecoder: Decoder[A]): ZIO[Any, NextMessageError, NextMessageResponse[A]] = {
     val nextMessageUrl = lambdaConfig.nextInvocationUrl
     val request: Request[Either[String, String], Any] = basicRequest
       .get(uri"$nextMessageUrl")
@@ -52,11 +53,16 @@ class LambdaHttpClient(lambdaConfig: LambdaConfig) {
       headerRequestId <- maybeRequestIdHeader match {
         case Some(requestIdHeader) => ZIO.succeed(requestIdHeader.value)
         case None =>
-          ZIO.fail(NextMessageError(s"No request id was found in the headers for the next message - $headers", None))
+          ZIO.fail(
+            NextMessageError(None, s"No request id was found in the headers for the next message - $headers", None)
+          )
       }
       result <- parseNewMessageBody(response.body, nextMessageUrl, headerRequestId)
     } yield NextMessageResponse(headerRequestId, result)
 
+  }.mapError {
+    case nextMessageError: NextMessageError => nextMessageError
+    case error => NextMessageError(None, "Error getting next message", Some(error))
   }
 
   private def parseNewMessageBody[A](response: Either[String, String], nextMessageUrl: String, headerRequestId: String)(
@@ -68,6 +74,7 @@ class LambdaHttpClient(lambdaConfig: LambdaConfig) {
         .logError(s"$nextMessageUrl failed with $response")
         .mapError(error =>
           NextMessageError(
+            maybeRequestId = Some(headerRequestId),
             message = s"$headerRequestId headerRequestId failed reading",
             maybeCause = Some(new RuntimeException(s"Service returned $error for $nextMessageUrl"))
           )
@@ -75,7 +82,11 @@ class LambdaHttpClient(lambdaConfig: LambdaConfig) {
       sqsDecoding <- ZIO
         .fromEither {
           SqsDecoding.decodeMany(responseText).left.map { error =>
-            NextMessageError(s"$headerRequestId headerRequestId failed decoding from $responseText", Some(error))
+            NextMessageError(
+              maybeRequestId = Some(headerRequestId),
+              s"$headerRequestId headerRequestId failed decoding from $responseText",
+              Some(error)
+            )
           }
         }
         .logError(s"Failed decoding message text $responseText")
@@ -84,7 +95,7 @@ class LambdaHttpClient(lambdaConfig: LambdaConfig) {
 
   private def runRequest[A](request: Request[A, Any]): ZIO[Any, Throwable, Response[A]] = {
     for {
-      _ <- ZIO.log(s"calling lambda using ${request.method}:${request.uri}")
+      _ <- ZIO.log(s"Calling lambda using ${request.method}:${request.uri}")
       backend <- HttpClientZioBackend()
       result <- request.send(backend)
     } yield result
@@ -94,11 +105,16 @@ class LambdaHttpClient(lambdaConfig: LambdaConfig) {
       requestId: String,
       message: String
   ): ZIO[Any, Throwable, Response[Either[String, String]]] = {
+    val uri = lambdaConfig.invocationResponseUrlFormat.format(requestId)
     val request: Request[Either[String, String], Any] = basicRequest
-      .post(uri"${lambdaConfig.invocationResponseUrlFormat.format(requestId)}")
+      .post(uri"$uri")
       .body(message)
 
-    runRequest(request)
+    for {
+      _ <- ZIO.log(s"Sending invocation response to $uri - $message")
+      invocationResponseResult <- runRequest(request)
+    } yield invocationResponseResult
+
   }
 
 }
