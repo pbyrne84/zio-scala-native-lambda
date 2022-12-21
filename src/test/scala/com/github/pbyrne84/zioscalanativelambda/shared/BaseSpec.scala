@@ -62,4 +62,41 @@ abstract class BaseSpec extends ZIOSpec[BaseSpec.Shared] {
     }
   }
 
+  // just for namespacing as bunging things in the parent gets nasty with the scopy getting overloaded
+  // so you cannot find anything without opening the class up which gets annoying.
+  // This way things can be moved out to there own class and then instances can be assigned to sqsMessage.
+  object sqsMessage {
+    def createValid(messageBody: String): String = {
+      val messageAsJsonString = Json.fromString(messageBody).noSpaces
+      s"""
+            |{
+            |  "Records": [
+            |    {
+            |      "messageId": "9d9868cb-2ea7-4e67-9661-7310ea6354f2",
+            |      "receiptHandle": "AQEBlI+oiogEjaSs56uTUzJbk6tp4y6ai6==",
+            |      "body": $messageAsJsonString,
+            |      "attributes": {
+            |        "ApproximateReceiveCount": "7",
+            |        "SentTimestamp": "1671539235847"
+            |      },
+            |      "messageAttributes": {},
+            |      "md5OfBody": "886251e46ceb8fddeb5dc79b26b2fab1",
+            |      "eventSource": "aws:sqs",
+            |      "eventSourceARN": "arn:aws:sqs:eu-west-2:538645939706:zio-lambda-test-queue",
+            |      "awsRegion": "eu-west-2"
+            |    }
+            |  ]
+            |}
+            |""".stripMargin
+    }
+
+    def createExpectedInvocationMessage( text: String): Either[ParsingFailure, Json] = {
+      parseJson(s"""
+          |{
+          |  "status" : "$text"
+          |}
+          |""".stripMargin)
+    }
+  }
+
 }

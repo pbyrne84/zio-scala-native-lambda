@@ -3,14 +3,18 @@ package com.github.pbyrne84.zioscalanativelambda.shared.wiremock
 import com.github.pbyrne84.zioscalanativelambda.shared.InitialisedParams
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.http.{HttpHeader, HttpHeaders}
-import com.github.tomakehurst.wiremock.matching.RequestPatternBuilder
+import com.github.tomakehurst.wiremock.matching.{RequestPattern, RequestPatternBuilder}
 import com.github.tomakehurst.wiremock.stubbing.StubMapping
+import com.github.tomakehurst.wiremock.verification.LoggedRequest
 import com.typesafe.scalalogging.StrictLogging
 import zio.{Task, ZIO, ZLayer}
 
+import java.util
 import scala.jdk.CollectionConverters.CollectionHasAsScala
 
 object LambdaWireMock {
+
+  private val zioService = ZIO.serviceWithZIO[LambdaWireMock]
 
   val layer: ZLayer[InitialisedParams, Nothing, LambdaWireMock] = ZLayer {
     for {
@@ -23,22 +27,32 @@ object LambdaWireMock {
       response: String,
       responseHeaders: List[(String, String)]
   ): ZIO[LambdaWireMock, Throwable, Unit] =
-    ZIO.serviceWithZIO[LambdaWireMock](_.stubGetNextMessageCall(response, responseHeaders))
+    zioService(_.stubGetNextMessageCall(response, responseHeaders))
 
   def stubInvocationResponseCall(
       requestId: String,
       response: String
   ): ZIO[LambdaWireMock, Throwable, Unit] =
-    ZIO.serviceWithZIO[LambdaWireMock](_.stubInvocationResponseCall(requestId, response))
+    zioService(_.stubInvocationResponseCall(requestId, response))
 
-  def getStubbings: ZIO[LambdaWireMock, Throwable, List[StubMapping]] =
-    ZIO.serviceWithZIO[LambdaWireMock](_.getStubbings)
-
-  def verifyHeaders(headers: List[(String, String)]): ZIO[LambdaWireMock, Throwable, Unit] = {
-    ZIO.serviceWithZIO[LambdaWireMock](_.verifyHeaders(headers))
+  def verifyInvocationResponseCall(
+      requestId: String,
+      invocationResponse: String
+  ): ZIO[LambdaWireMock, Throwable, Unit] = {
+    zioService(_.verifyInvocationResponseCall(requestId, invocationResponse))
   }
 
-  def reset: ZIO[LambdaWireMock, Throwable, Unit] = ZIO.serviceWithZIO[LambdaWireMock](_.reset)
+  def getStubbings: ZIO[LambdaWireMock, Throwable, List[StubMapping]] =
+    zioService(_.getStubbings)
+
+  def getUnexpectedCalls: ZIO[LambdaWireMock, Throwable, List[LoggedRequest]] =
+    zioService(_.getUnexpectedCalls)
+
+  def verifyHeaders(headers: List[(String, String)]): ZIO[LambdaWireMock, Throwable, Unit] = {
+    zioService(_.verifyHeaders(headers))
+  }
+
+  def reset: ZIO[LambdaWireMock, Throwable, Unit] = zioService(_.reset)
 
 }
 
@@ -76,6 +90,16 @@ class LambdaWireMock(testWireMock: TestWireMock) extends StrictLogging {
     stubCall(invocationResponseUrlFormat.format(requestId), response, List.empty)
   }
 
+  def verifyInvocationResponseCall(requestId: String, invocationResponse: String): Task[Unit] = {
+    ZIO.attempt {
+      testWireMock.wireMock.verify(
+        WireMock
+          .postRequestedFor(WireMock.urlEqualTo(invocationResponseUrlFormat.format(requestId)))
+          .withRequestBody(WireMock.equalToJson(invocationResponse))
+      )
+    }
+  }
+
   def verifyHeaders(headers: List[(String, String)]): Task[Unit] = {
     // wiremock is a builder builder builder mutation thingy
     val builder: RequestPatternBuilder = anyRequestedFor(urlMatching(".*"))
@@ -87,7 +111,11 @@ class LambdaWireMock(testWireMock: TestWireMock) extends StrictLogging {
   }
 
   def getStubbings: Task[List[StubMapping]] = {
-    ZIO.attemptBlocking { testWireMock.wireMock.getStubMappings.asScala.toList }
+    ZIO.attemptBlocking(testWireMock.wireMock.getStubMappings.asScala.toList)
+  }
+
+  def getUnexpectedCalls: Task[List[LoggedRequest]] = {
+    ZIO.attemptBlocking(testWireMock.wireMock.findAllUnmatchedRequests().asScala.toList)
   }
 
 }

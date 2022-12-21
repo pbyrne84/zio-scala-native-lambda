@@ -16,7 +16,6 @@ object LambdaConfig {
     )
 
   private lazy val configTask = {
-    println("boooo " + System.getProperty("AWS_LAMBDA_RUNTIME_API_PORT"))
     ZIO.attempt(ConfigFactory.load(ConfigParseOptions.defaults().setAllowMissing(true)))
   }
 
