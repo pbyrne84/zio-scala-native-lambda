@@ -90,7 +90,7 @@ abstract class BaseSpec extends ZIOSpec[BaseSpec.Shared] {
             |""".stripMargin
     }
 
-    def createExpectedInvocationMessage( text: String): Either[ParsingFailure, Json] = {
+    def createExpectedInvocationMessage(text: String): Either[ParsingFailure, Json] = {
       parseJson(s"""
           |{
           |  "status" : "$text"
